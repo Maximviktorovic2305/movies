@@ -1,0 +1,19 @@
+:root {
+	--black: #000000;
+	--red: #fa2828;
+	--red-light: #ff5252fa;
+	--white: #ffffff;
+	--gray-light: #e5e5e5;
+	--gray: #c4c4c4;
+	--gray-middle: #988f8f;
+	--gray-dark: #4d4747;
+	--gray-deep: #363232;
+}
+
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+	font-family: 'Roboto', sans-serif;
+	font-size: 16px;
+}
