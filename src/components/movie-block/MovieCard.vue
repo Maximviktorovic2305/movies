@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 	import { MovieProps } from '../../types'
 	import Separator from '../Separator.vue'
-import TimerBlock from '../TimerBlock.vue';
+	import TimerBlock from '../TimerBlock.vue'
 
 	interface Props {
 		movie: MovieProps
@@ -34,7 +34,7 @@ import TimerBlock from '../TimerBlock.vue';
 			<div>
 				<img
 					v-if="props.movie.frames"
-					:src="props.movie.frames[0]"
+					:src="props.movie.frames[0] ? props.movie.frames[0] : '/no-image.png'"
 					alt="image" />
 			</div>
 		</router-link>

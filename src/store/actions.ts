@@ -1,14 +1,22 @@
 import { instanse } from '../api/axiosConfig'
 
-export function getMovies({ commit }: { commit: any }) {
-	instanse.get(`movies`).then(({ data }) => {
-		commit('setMovies', data.data)
-	})
-}
+export async function getMovies({ commit }: { commit: any }) {
+	commit('setLoading', true)
+	try {
+		const response = await instanse.get('movies')
+		commit('setMovies', response.data.data)
+		
+	} catch (error) {
+		console.log(error)
+	} finally {
+		commit('setLoading', false)
+	}
+}   
 
-export function setSortingOption({ commit }: { commit: any }, option: string) {
-	commit('setActiveSortingOption', option)
-}         
+
+// export async function setSortingOption({ commit }: { commit: any }, option: string) {
+// 	commit('setActiveSortingOption', option)
+// }         
 
 
 

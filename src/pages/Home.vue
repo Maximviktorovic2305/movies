@@ -1,11 +1,7 @@
 <script lang="ts" setup>
-	import { computed } from 'vue'
 	import MovieBlock from '../components/movie-block/MovieBlock.vue'
 	import Separator from '../components/Separator.vue'
 	import Sort from '../components/sort/Sort.vue'
-	import store from '../store'
-
-	const movies = computed(() => store.state.movies)
 </script>
 
 <template>
@@ -14,9 +10,7 @@
 
 		<Sort />
 		<Separator />
-
 		<MovieBlock />
-		<!-- <Loader v-else="movies.length === 0" /> -->
 	</div>
 </template>
 
