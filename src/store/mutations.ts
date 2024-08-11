@@ -8,9 +8,13 @@ export function setLoading(state: any, isLoading: boolean) {
 	state.loading = isLoading
 }
 
-// export function setActiveSortingOption(state: any, option: string) {
-// 	state.activeSortingOption = option
-// }
+export function setSortByName(state: any, sortByName: boolean) {
+	state.sortByName = sortByName
+
+}
+export function setSortByYear(state: any, sortByYear: boolean) {
+	state.sortByYear = sortByYear
+}
 
 // export function setMealsByLetter(state, meals) {
 //   state.mealsByLetter = meals || []

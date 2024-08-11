@@ -1,22 +1,24 @@
 <script lang="ts" setup>
+	import store from '../../store/index.ts'
 
 	const { label } = defineProps<{ label: string }>()
 
-	// const handleSetSort = (e: Event) => {
-	// 	const { id } = e.target as HTMLInputElement
+	const handleSetSort = (e: Event) => {
+		const { checked } = e.target as HTMLInputElement
 
-	// 	if (id) {
-	// 		store.dispatch('setSortingOption', id)
-	// 	} else {
-	// 		store.dispatch('setSortingOption', '')
-	// 	}
-	// }
-	// <input @change="handleSetSort" :id="label" type="radio" name="radio" />
+		if (label == 'Отсортировать по названию' && checked) {
+			store.dispatch('getSortByName', true)
+			store.dispatch('getSortByYear', false)
+		} else if (label == 'Отсортировать по году' && checked) {
+			store.dispatch('getSortByName', false)
+			store.dispatch('getSortByYear', true)
+		}
+	}
 </script>
 
 <template>
-	<input :id="label" type="radio" name="radio" />
-	
+	<input @change="handleSetSort" :id="label" type="radio" name="radio" />
+
 	<label for="radio">{{ label }}</label>
 </template>
 

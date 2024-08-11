@@ -2,6 +2,7 @@
 	import { onMounted, ref } from 'vue'
 	import { useRoute } from 'vue-router'
 	import { instanse } from '../api/axiosConfig'
+	import Loader from '../components/Loader.vue'
 	import MovieCard from '../components/movie-block/MovieCard.vue'
 	import Separator from '../components/Separator.vue'
 	import { MovieProps } from '../types'
@@ -16,9 +17,10 @@
 </script>
 
 <template>
+	<div v-if="!movie"><Loader /></div>
 	<MovieCard v-if="movie" :movie="movie" type="movieDetails" />
 
-	<div v-else="movie" class="back-to-home">
+	<div v-else class="back-to-home">
 		<router-link to="/">
 			<div>
 				<img src="/Vector.png" alt="vector" />

@@ -14,9 +14,13 @@ export async function getMovies({ commit }: { commit: any }) {
 }   
 
 
-// export async function setSortingOption({ commit }: { commit: any }, option: string) {
-// 	commit('setActiveSortingOption', option)
-// }         
+export function getSortByName({ commit }: { commit: any }, sortByName: boolean) {
+	commit('setSortByName', sortByName)
+}   
+
+export function getSortByYear({ commit }: { commit: any }, sortByYear: boolean) {
+	commit('setSortByYear', sortByYear)
+}         
 
 
 

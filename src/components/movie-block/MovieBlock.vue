@@ -1,6 +1,7 @@
 <script lang="ts" setup>
 	import { computed, onMounted } from 'vue'
 	import store from '../../store/index.ts'
+	import { MovieProps } from '../../types/index.ts'
 	import Loader from '../Loader.vue'
 	import MovieCard from './MovieCard.vue'
 
@@ -9,9 +10,22 @@
 	})
 
 	const movies = computed(() => store.state.movies)
-	const loading = computed(() => store.state.loading)   
+	const loading = computed(() => store.state.loading)
+	const sortByName = computed(() => store.state.sortByName)
+	const sortByYear = computed(() => store.state.sortByYear)
 
-	console.log(movies)
+	const sortedMovies = computed(() => {
+		const sorted = [...movies.value]
+		if (sortByName.value) {
+			sorted.sort((a: MovieProps, b: MovieProps) =>
+				a.title.localeCompare(b.title),
+			)
+		}
+		if (sortByYear.value) {
+			sorted.sort((a: MovieProps, b: MovieProps) => a.year - b.year)
+		}
+		return sorted
+	})
 </script>
 
 <template>
@@ -19,7 +33,7 @@
 	<div v-else class="movie-block">
 		<MovieCard
 			type="listItem"
-			v-for="movie of movies"
+			v-for="movie of sortedMovies"
 			:key="movie.id"
 			:movie="movie" />
 	</div>
