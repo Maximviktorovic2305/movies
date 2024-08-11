@@ -1,6 +1,13 @@
-// export function setSearchedMeals(state, meals) {
-//   state.searchedMeals = meals || []
-// }
+import { MovieProps } from '../types'
+
+export function setMovies(state: any, movies: MovieProps[]) {
+	state.movies = movies || []
+}
+
+export function setActiveSortingOption(state: any, option: string) {
+	state.activeSortingOption = option
+}
+
 // export function setMealsByLetter(state, meals) {
 //   state.mealsByLetter = meals || []
 // }

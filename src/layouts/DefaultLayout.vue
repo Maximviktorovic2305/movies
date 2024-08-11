@@ -20,6 +20,7 @@
 		justify-content: space-between;
 
 		.main {
+			position: relative;
 			flex-grow: 1;
 			background-color: var(--gray-deep);
 			padding: 40px 260px;

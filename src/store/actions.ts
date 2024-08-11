@@ -1,11 +1,22 @@
-// import axiosClient from '../axiosClient';
+import { instanse } from '../api/axiosConfig'
 
-// export function searchMeals({ commit }, keyword) {
-//   axiosClient.get(`search.php?s=${keyword}`)
-//     .then(({ data }) => {
-//       commit('setSearchedMeals', data.meals)
-//     })
-// }
+export function getMovies({ commit }: { commit: any }) {
+	instanse.get(`movies`).then(({ data }) => {
+		commit('setMovies', data.data)
+	})
+}
+
+export function setSortingOption({ commit }: { commit: any }, option: string) {
+	commit('setActiveSortingOption', option)
+}         
+
+
+
+
+
+
+
+
 
 // export function searchMealsByLetter({ commit }, letter) {
 //   axiosClient.get(`search.php?f=${letter}`)

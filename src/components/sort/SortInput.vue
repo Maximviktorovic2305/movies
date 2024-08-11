@@ -1,11 +1,22 @@
 <script lang="ts" setup>
+	import store from '../../store/index.ts'
 
-	const { label } = defineProps<{label: string}>()
+	const { label } = defineProps<{ label: string }>()
+
+	const handleSetSort = (e: Event) => {
+		const { id } = e.target as HTMLInputElement
+
+		if (id) {
+			store.dispatch('setSortingOption', id)
+		} else {
+			store.dispatch('setSortingOption', '')
+		}
+	}
 </script>
 
 <template>
-	<input type="radio" name="radio" />
-	<label>{{ label }}</label>
+	<input @change="handleSetSort" :id="label" type="radio" name="radio" />
+	<label for="radio">{{ label }}</label>
 </template>
 
 <style lang="scss" scoped>
