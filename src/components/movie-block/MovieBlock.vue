@@ -17,9 +17,17 @@
 	const sortedMovies = computed(() => {
 		const sorted = [...movies.value]
 		if (sortByName.value) {
-			sorted.sort((a: MovieProps, b: MovieProps) =>
-				a.title.localeCompare(b.title),
-			)
+			const englishWords = sorted
+				.filter((item: MovieProps) => /^[A-Za-z]/.test(item.title))
+				.sort((a: MovieProps, b: MovieProps) => a.title.localeCompare(b.title))
+
+			const russianWords = sorted
+				.filter((item: MovieProps) => /^[а-яА-ЯёЁ]/.test(item.title))
+				.sort((a: MovieProps, b: MovieProps) =>
+					a.title.localeCompare(b.title, 'ru'),
+				)
+
+			return englishWords.concat(russianWords)
 		}
 		if (sortByYear.value) {
 			sorted.sort((a: MovieProps, b: MovieProps) => a.year - b.year)

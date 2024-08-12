@@ -19,7 +19,6 @@ const routes = [
 				name: 'movieById',
 				component: MovieDetails,
 			},
-
 		],
 	},
 ]

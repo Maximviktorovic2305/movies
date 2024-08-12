@@ -10,18 +10,7 @@ export function setLoading(state: any, isLoading: boolean) {
 
 export function setSortByName(state: any, sortByName: boolean) {
 	state.sortByName = sortByName
-
 }
 export function setSortByYear(state: any, sortByYear: boolean) {
 	state.sortByYear = sortByYear
 }
-
-// export function setMealsByLetter(state, meals) {
-//   state.mealsByLetter = meals || []
-// }
-// export function setMealsByIngredients(state, meals) {
-//   state.mealsByIngredient = meals || []
-// }
-// export function setIngredient(state, ingredient) {
-//   state.ingredient = ingredient
-// }

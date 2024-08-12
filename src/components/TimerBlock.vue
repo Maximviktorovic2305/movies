@@ -14,7 +14,7 @@
 <template>
 	<div v-if="props.time?.duration" class="timer">
 		<span>{{ timeString }}</span>
-      <img src="/Kadr.png" alt="kadr">
+		<img src="/Kadr.png" alt="kadr" />
 	</div>
 </template>
 
@@ -25,7 +25,7 @@
 		display: flex;
 		align-items: center;
 		justify-content: center;
-      gap: 8px;   
+		gap: 8px;
 		top: 32px;
 		right: 0;
 		width: 184px;
@@ -33,9 +33,9 @@
 		background-color: var(--gray);
 		clip-path: polygon(4% 0, 100% 0, 100% 100%, 0% 100%);
 
-      @media (max-width: 768px) {
+		@media (max-width: 768px) {
 			top: 0px;
-         right: 0px;
+			right: 0px;
 		}
 
 		span {
@@ -43,7 +43,7 @@
 			font-weight: 700;
 			line-height: 12px;
 			text-transform: uppercase;
-         color: var(--black);
+			color: var(--black);
 		}
 	}
 </style>

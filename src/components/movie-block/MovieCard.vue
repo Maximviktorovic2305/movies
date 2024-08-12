@@ -1,4 +1,6 @@
 <script lang="ts" setup>
+	import { useRouter } from 'vue-router'
+	import store from '../../store'
 	import { MovieProps } from '../../types'
 	import Separator from '../Separator.vue'
 	import TimerBlock from '../TimerBlock.vue'
@@ -10,16 +12,22 @@
 
 	const props = defineProps<Props>()
 	const isDetailsType = props.type === 'movieDetails'
+
+	const router = useRouter()
+
+	const handleLinkClick = () => {
+		store.dispatch('getSortByName', false)
+		store.dispatch('getSortByYear', false)
+		router.push('/')
+	}
 </script>
 
 <template>
 	<div class="back-to-home" v-if="isDetailsType">
-		<router-link to="/">
-			<div>
-				<img src="/Vector.png" alt="vector" />
-				<span> Назад к списку </span>
-			</div>
-		</router-link>
+		<div @click="handleLinkClick">
+			<img src="/Vector.png" alt="vector" />
+			<span> Назад к списку </span>
+		</div>
 		<Separator />
 	</div>
 
@@ -39,7 +47,9 @@
 			</div>
 		</router-link>
 		<div class="content-box">
-			<h3>{{ props.movie.title }}</h3>
+			<router-link :to="{ name: 'movieById', params: { id: props.movie.id } }">
+				<h3>{{ props.movie.title }}</h3>
+			</router-link>
 			<div class="genries">
 				<span class="year">{{ props.movie.year }}</span>
 				<span
@@ -68,19 +78,13 @@
 
 <style lang="scss" scoped>
 	.back-to-home {
-		a {
-			font-size: 20px;
-			color: var(--red-light);
-
-			@media (max-width: 768px) {
-				font-size: 16px;
-			}
-		}
 		div {
 			display: flex;
 			align-items: center;
 			gap: 18px;
 			color: var(--red-light);
+			text-decoration: underline;
+			cursor: pointer;
 
 			span {
 				font-size: 20px;
@@ -146,17 +150,20 @@
 			font-weight: 700;
 			text-align: left;
 
-			& h3 {
-				margin-bottom: 10px;
-				font-size: 36px;
-				color: var(--white);
+			a {
+				text-decoration: none;
+				& h3 {
+					margin-bottom: 10px;
+					font-size: 36px;
+					color: var(--white);
 
-				@media (max-width: 768px) {
-					font-size: 24px;
-				}
+					@media (max-width: 768px) {
+						font-size: 24px;
+					}
 
-				@media (max-width: 420px) {
-					font-size: 16px;
+					@media (max-width: 420px) {
+						font-size: 16px;
+					}
 				}
 			}
 
@@ -258,17 +265,20 @@
 			font-weight: 700;
 			text-align: left;
 
-			& h3 {
-				margin-bottom: 10px;
-				font-size: 36px;
-				color: var(--white);
+			a {
+				text-decoration: none;
+				& h3 {
+					margin-bottom: 10px;
+					font-size: 36px;
+					color: var(--white);
 
-				@media (max-width: 768px) {
-					font-size: 24px;
-				}
+					@media (max-width: 768px) {
+						font-size: 24px;
+					}
 
-				@media (max-width: 420px) {
-					font-size: 16px;
+					@media (max-width: 420px) {
+						font-size: 16px;
+					}
 				}
 			}
 
